@@ -1,28 +1,18 @@
 # Sentiment-Analysis-Twitter
 
-##    -Ayush Pareek
-
-[Click here to see a video about this work](https://www.youtube.com/watch?v=rM87H75JNjA)
-
-[Click here to see an introductory presentation given during a rudimentary stage of this project](https://www.slideshare.net/secret/MuWmNWZxYi2l9t)
-
-[![Join the chat at https://gitter.im/Sentiment-Analysis-Twitter/Lobby](https://badges.gitter.im/Sentiment-Analysis-Twitter/Lobby.svg)](https://gitter.im/Sentiment-Analysis-Twitter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-### Update: I've sold this project to the AI and Data Science PaaS company OnePanel Inc. who are hosting it as a commercial API here-> https://www.onepanel.io/algorithms/twitter-sentiment-analyzer.html. However, I will continue to publicly host the code for the open-source community.
-
 Microblogging today has become a very popular communication tool among Internet users. Millions of messages are appearing daily in popular web-sites that provide services for microblogging such as Twitter, Tumblr, Facebook. Authors of those messages write about their life, share opinions on variety of topics and discuss current issues. Because of a free format of messages and an easy accessibility
 of microblogging platforms, Internet users tend to shift from traditional communication tools (such as traditional blogs or mailing lists) to microblogging services. As more and more users post about products and services they use, or express their political and religious views, microblogging web-sites become valuable sources of people’s opinions and sentiments. Such data can be efficiently used
 for marketing or social studies.[1]
 
 ![Political Sentiments](http://i.imgur.com/KtsvI4f.jpg)
+
 <!--![Sentiments](http://i.imgur.com/57Yhewq.png)-->
 
+## 1 Introduction
 
-##  1  Introduction
+### 1.1 Applications of Sentiment Analysis
 
-###  1.1 Applications of  Sentiment Analysis
 Sentiment Analysis finds its application in a variety of domains.
-
 
 **A. Online Commerce**
 
@@ -43,7 +33,6 @@ destinations. They contain 75 millions opinions and
 reviews worldwide. Sentiment analysis helps such
 websites by converting dissatisfied customers into
 promoters by analyzing this huge volume of opinions.
-
 
 **B. Voice of the Market (VOM)**
 
@@ -67,7 +56,6 @@ Sysomos, Viralheat, Lexalytics, etc. are commercial
 services. Some free tools like www.tweettfeel.com,
 www.socialmention.com are also available.
 
-
 **C. Voice of the Customer (VOC)**
 
 Voice of the Customer is concern about what
@@ -79,7 +67,6 @@ new opportunities for product inventions. Extracting
 customer opinions also helps identify functional
 requirements of the products and some non-functional
 requirements like performance and cost.
-
 
 **D. Brand Reputation Management**
 
@@ -98,7 +85,6 @@ about them. Sentiment analysis helps in determining
 how company’s brand, product or service is being
 perceived by community online.
 
-
 **E. Government**
 
 Sentiment analysis helps government in assessing
@@ -115,39 +101,36 @@ success of electronic submission of tax returns, or
 many other areas, we can see the potential for
 sentiment analysis.
 
-     
 ![Sentiment Analysis can be useful to understand how the mood of the public affects election results](http://i.imgur.com/QI1IiDX.png)
 
 Figure: Sentiment Analysis can be useful to understand how the mood of the public affects election results
 
-
-### 1.2 Characteristic features of Tweets 
+### 1.2 Characteristic features of Tweets
 
 From the perspective of Sentiment
 Analysis, we discuss a few characteristics of Twitter:
 
 **Length of a Tweet**
-     The maximum length of a Twitter message is 140 characters. This means that we can practically consider a tweet to be a single sentence, void of complex grammatical constructs. This is a vast difference from traditional subjects of Sentiment Analysis, such as movie reviews. 
-     
+The maximum length of a Twitter message is 140 characters. This means that we can practically consider a tweet to be a single sentence, void of complex grammatical constructs. This is a vast difference from traditional subjects of Sentiment Analysis, such as movie reviews.
+
 **Language used**
-     Twitter is used via a variety of media including SMS and mobile phone apps. Because of this and the 140-character limit, language used in Tweets tend be more colloquial, and filled with slang and misspellings. Use of hashtags also gained popularity on Twitter and is a primary feature in any given tweet. Our analysis shows that there are approximately 1-2 hashtags per tweet, as shown in Table 3 . 
-     
+Twitter is used via a variety of media including SMS and mobile phone apps. Because of this and the 140-character limit, language used in Tweets tend be more colloquial, and filled with slang and misspellings. Use of hashtags also gained popularity on Twitter and is a primary feature in any given tweet. Our analysis shows that there are approximately 1-2 hashtags per tweet, as shown in Table 3 .
+
 **Data availability**
-     Another difference is the magnitude of data available. With the Twitter API, it is easy to collect millions of tweets for training. There also exist a few datasets that have automatically and manually labelled the tweets [2] [3]. 
-     
+Another difference is the magnitude of data available. With the Twitter API, it is easy to collect millions of tweets for training. There also exist a few datasets that have automatically and manually labelled the tweets [2] [3].
+
 **Domain of topics**
-     People often post about their likes and dislikes on social media. These are not al concentrated around one topic. This makes twitter a unique place to model a generic classifier as opposed to domain specific classifiers that could be build datasets such as movie reviews. 
-     
-     
-## 2  Related Work
+People often post about their likes and dislikes on social media. These are not al concentrated around one topic. This makes twitter a unique place to model a generic classifier as opposed to domain specific classifiers that could be build datasets such as movie reviews.
+
+## 2 Related Work
 
 ### 2.1 [Go, Bhayani and Huang (2009)](http://www-cs.stanford.edu/people/alecmgo/papers/TwitterDistantSupervision09.pdf)
 
- They classify Tweets for a query term into negative or positive sentiment. They collect training dataset automatically from Twitter. To collect positive and negative tweets, they query twitter for happy and sad emoticons.
- 
- * Happy emoticons are different versions of smiling face, like ":)", ":-)", ": )", ":D", "=)" etc.
- * Sad emoticons include frowns, like ":(", ":-(", ":(" etc.
- 
+They classify Tweets for a query term into negative or positive sentiment. They collect training dataset automatically from Twitter. To collect positive and negative tweets, they query twitter for happy and sad emoticons.
+
+- Happy emoticons are different versions of smiling face, like ":)", ":-)", ": )", ":D", "=)" etc.
+- Sad emoticons include frowns, like ":(", ":-(", ":(" etc.
+
 They try various features – unigrams, bigrams and Part-of-Speech and train their classifier on various machine learning algorithms – Naive Bayes, Maximum Entropy and Scalable Vector Machines and compare it against a baseline classifier by counting the number of positive and negative words from a publicly available corpus. They report that Bigrams alone and Part-of-Speech Tagging are not helpful and that Naive Bayes Classifier gives the best results.
 
 ### 2.2 [Pak and Paroubek (2010)](https://pdfs.semanticscholar.org/ad8a/7f620a57478ff70045f97abc7aec9687ccbd.pdf)
@@ -165,14 +148,13 @@ data for building training data.
 
 They discuss a semantic based approach to identify the entity being discussed in a tweet, like a person, organization etc. They also demonstrate that removal of stop words is not a necessary step and may have undesirable effect on the classifier.
 
-
 All of the aforementioned techniques rely on n-gram features. It is unclear that the use of Part-of-Speech tagging is useful or not. To improve accuracy, some employ different methods of feature selection or leveraging knowledge about micro-blogging. In contrast, we improve our results by using more basic techniques used in Sentiment Analysis, like stemming, two-step classification and negation detection and scope of negation.
 
 Negation detection is a technique that has often been studied in sentiment analysis. Negation words like “not”, “never”, “no” etc. can drastically change the meaning of a sentence and hence the sentiment expressed in them. Due to presence of such words, the meaning of nearby words becomes opposite. Such words are said to be in the scope of negation. Many researches have worked on detecting the scope of negation.
 
 The scope of negation of a cue can be taken from that word to the next following punctuation. Councill, McDonald and Velikovich (2010) discuss a technique to identify negation cues and their scope in a sentence. They identify explicit negation cues in the text and for each word in the scope. Then they find its distance from the nearest negative cue on the left and right.
 
-##  3  Approach
+## 3 Approach
 
 We use different feature sets and machine learning classifiers to determine
 the best combination for sentiment analysis of twitter. We also experiment
@@ -190,13 +172,13 @@ We use a modularized approach with feature extractor and classification
 algorithm as two independent components. This enables us to experiment with
 different options for each component.
 
-###  3.1  Datasets
+### 3.1 Datasets
 
 One of the major challenges in Sentiment Analysis of Twitter is to collect a
 labelled dataset. Researchers have made public the following datasets for
 training and testing classifiers.
 
-####  3.1.1  Twitter Sentiment Corpus
+#### 3.1.1 Twitter Sentiment Corpus
 
 This is a collection of 5513 tweets collected for four different topics,
 namely, Apple, Google, Microsoft, Twitter It is collected and hand-classified
@@ -209,17 +191,13 @@ and Neutral to be the same class. Illustration of Tweets in this corpus is
 show in Table 1 .
 
 - **Positive**
-     For showing positive sentiment towards the topic
-     
+  For showing positive sentiment towards the topic
 - **Positive**
-     For showing no or mixed or weak sentiments towards the topic
-     
+  For showing no or mixed or weak sentiments towards the topic
 - **Negative**
-     For showing negative sentiment towards the topic
-     
+  For showing negative sentiment towards the topic
 - **Irrelevant**
-     For non English text or off-topic comments
-     
+  For non English text or off-topic comments
 
 <div style="text-align:center">
 <table border="1">
@@ -230,14 +208,13 @@ show in Table 1 .
 <tr><td align="left">pos </td><td align="right">483 </td><td width="0">Now all @Apple has to do is get swype on the iphone and
                 it will be crack. Iphone that is </td></tr></table>
 
-
 <div class="p"><!----></div>
 <div style="text-align:center">Table 1: Twitter Sentiment Corpus</div>
 <a id="tab:TSC">
 </a>
 </div>
 
-####  3.1.2  Stanford Twitter
+#### 3.1.2 Stanford Twitter
 
 This corpus of tweets, developed by Sanford’s Natural Language processing
 research group, is publically available. The training set is collected by
@@ -254,14 +231,13 @@ corpus are shown in Table 2 .
 <tr><td align="left">neg </td><td align="right">2501 </td><td width="0">Playing after the others thanks to TV scheduling may well allow us to know what's go on, but it makes things look bad on Saturday nights  </td></tr>
 <tr><td align="left">pos </td><td align="right">2499 </td><td width="0">@francescazurlo HAHA!!! how long have you been singing that song now? It has to be at least a day. i think you're wildly entertaining!  </td></tr></table>
 
-
 <div class="p"><!----></div>
 <div style="text-align:center">Table 2: Stanford Corpus</div>
 <a id="tab:STAN">
 </a>
 </div>
 
-###  3.2  Pre Processing
+### 3.2 Pre Processing
 
 User-generated content on the web is seldom present in a form usable for
 learning. It becomes important to normalize the text by applying a series of
@@ -289,14 +265,13 @@ Figure 2: Illustration of a Tweet with various features
 <tr><td align="left">Emoticons  </td><td align="right">0.0550 </td><td align="right">3 </td><td align="right">0.0154 </td><td align="right">4 </td><td align="right">0.0348 </td><td align="right">4 </td></tr>
 <tr><td align="left">Words      </td><td align="right">14.4084 </td><td align="right">31 </td><td align="right">13.2056 </td><td align="right">33 </td><td align="right">13.7936 </td><td align="right">33 </td></tr></table>
 
-
 <div class="p"><!----></div>
 <div style="text-align:center">Table 3: Frequency of Features per Tweet</div>
 <a id="tab:feat_freq">
 </a>
 </div>
 
-####  3.2.1  Hashtags
+#### 3.2.1 Hashtags
 
 A hashtag is a word or an un-spaced phrase prefixed with the hash symbol (#).
 These are used to both naming subjects and phrases that are currently in
@@ -306,7 +281,7 @@ Regular Expression: `#(\w+)`
 
 Replace Expression: `HASH_\1`
 
-####  3.2.2  Handles
+#### 3.2.2 Handles
 
 Every Twitter user has a unique username. Any thing directed towards that user
 can be indicated be writing their username preceded by ‘@’. Thus, these are
@@ -316,7 +291,7 @@ Regular Expression: `@(\w+)`
 
 Replace Expression: `HNDL_\1`
 
-####  3.2.3  URLs
+#### 3.2.3 URLs
 
 Users often share hyperlinks in their tweets. Twitter shortens them using its
 in-house URL shortening service, like http://t.co/FCWXoUd8 - such links also
@@ -331,7 +306,7 @@ Regular Expression: `(http|https|ftp)://[a-zA-Z0-9\\./]+`
 
 Replace Expression: `URL`
 
-####  3.2.4  Emoticons
+#### 3.2.4 Emoticons
 
 Use of emoticons is very prevalent throughout the web, more so on micro-
 blogging sites. We identify the following emoticons and replace them with a
@@ -348,13 +323,12 @@ emoticons would be ignored.
 <tr><td align="left"><tt>EMOT_FROWN</tt>    </td><td align="left"><tt>:-(</tt>  </td><td align="left"><tt>:(</tt>   </td><td align="left"><tt>(:</tt>   </td><td align="left"><tt>(-:</tt>  </td><td align="left"><tt></tt>     </td><td align="left"><tt></tt> </td></tr>
 <tr><td align="left"><tt>EMOT_CRY</tt>  </td><td align="left"><tt>:,(</tt>  </td><td align="left"><tt>:'(</tt>  </td><td align="left"><tt>:"(</tt>  </td><td align="left"><tt>:((</tt>  </td><td align="left"><tt></tt>     </td><td align="left"><tt></tt> </td></tr></table>
 
-
 <div style="text-align:center">Table 4: List of Emoticons</div>
 <a id="tab:emot">
 </a>
 </div>
 
-####  3.2.5  Punctuations
+#### 3.2.5 Punctuations
 
 Although not all Punctuations are important from the point of view of
 classification but some of these, like question mark, exclamation mark can
@@ -371,13 +345,12 @@ quotes that might exist in the text.
 <tr><td align="left"><tt>PUNC_QUES</tt> </td><td align="left"><tt>?</tt> </td><td align="left"><tt>¿</tt> </td></tr>
 <tr><td align="left"><tt>PUNC_ELLP</tt> </td><td align="left"><tt>...</tt> </td><td align="left"><tt>…</tt> </td></tr></table>
 
-
 <div style="text-align:center">Table 5: List of Punctuations</div>
 <a id="tab:punc">
 </a>
 </div>
 
-####  3.2.6  Repeating Characters
+#### 3.2.6 Repeating Characters
 
 People often use repeating characters while using colloquial language, like
 "I’m in a hurrryyyyy", "We won, yaaayyyyy!" As our final pre-processing step,
@@ -411,14 +384,13 @@ decrease in feature set due to processing each of these features.
 <tr><td align="left">Repeatings     </td><td align="right">18540 </td><td align="right">96.93% </td><td align="right">15276 </td><td align="right">96.02% </td><td align="right">30818 </td><td align="right">96.81% </td></tr>
 <tr><td align="left">All                </td><td align="right">11108 </td><td align="right">58.07% </td><td align="right">8646 </td><td align="right">54.34% </td><td align="right">16981 </td><td align="right">53.35% </td></tr></table>
 
-
 <div class="p"><!----></div>
 <div style="text-align:center">Table 6: Number of words before and after pre-processing</div>
 <a id="tab:reduction">
 </a>
 </div>
 
-###  3.3  Stemming Algorithms
+### 3.3 Stemming Algorithms
 
 All stemming algorithms are of the following major types – affix removing,
 statistical and mixed. The first kind, Affix removal stemmer, is the most
@@ -433,7 +405,7 @@ For a word being stemmed, an ending with a satisfying condition is found and
 removed. Another famous stemmer used extensively is described in the next
 section.
 
-####  3.3.1  Porter Stemmer
+#### 3.3.1 Porter Stemmer
 
 Martin Porter wrote a stemmer that was published in July 1980. This stemmer
 was very widely used and became and remains the de facto standard algorithm
@@ -451,13 +423,12 @@ recursion. The steps in the algorithm are described in Table 7 .
 <tr><td align="right">5.￼   </td><td align="left">Takes off -ant, -ence, etc. </td></tr>
 <tr><td align="right">6.    </td><td align="left">Removes a final –e </td></tr></table>
 
-
 <div style="text-align:center">Table 7: Porter Stemmer Steps</div>
 <a id="tab:porter">
 </a>
 </div>
 
-####  3.3.2  Lemmatization
+#### 3.3.2 Lemmatization
 
 Lemmatization is the process of normalizing a word rather than just finding
 its stem. In the process, a suffix may not only be removed, but may also be
@@ -467,14 +438,14 @@ involve dictionary look-up. For example, verb ‘saw’ would be lemmatized to
 ‘see’ and the noun ‘saw’ will remain ‘saw’. For our purpose of classifying
 text, stemming should suffice.
 
-###  3.4  Features
+### 3.4 Features
 
 A wide variety of features can be used to build a classifier for tweets. The
 most widely used and basic feature set is word n-grams. However, there's a lot
 of domain specific information present in tweets that can also be used for
 classifying them. We have experimented with two sets of features:
 
-####  3.4.1  Unigrams
+#### 3.4.1 Unigrams
 
 Unigrams are the simplest features that can be used for text classification. A
 Tweet can be represented by a multiset of words present in it. We, however,
@@ -495,7 +466,7 @@ proportional to its rank in the frequency table. Figure 4 is a plot of log
 frequency versus log rank of our dataset. A linear trendline fits well with
 the data.
 
-####  3.4.2  N-grams
+#### 3.4.2 N-grams
 
 N-gram refers to an n-long sequence of words. Probabilistic Language Models
 based on Unigrams, Bigrams and Trigrams can be successfully used to predict
@@ -527,9 +498,7 @@ considerably decreased and equals the order of unigrams, as shown in Figure 5
 
 Figure 5: Number of repeating n-grams vs. Number of Tweets
 
-
-
-####  3.4.3  Negation Handling
+#### 3.4.3 Negation Handling
 
 The need negation detection in sentiment analysis can be illustrated by the
 difference in the meaning of the phrases, "This is good" vs. "This is not
@@ -574,7 +543,6 @@ Table 8 . The search is done using regular expressions.
 <tr><td align="left">21.  </td><td align="left">aint </td></tr>
 <tr><td align="left">22.  </td><td align="left">Anything ending with "n't" </td></tr></table>
 
-
 <div style="text-align:center">Table 8: Explicit Negation Cues</div>
 <a id="tab:negation">
 </a>
@@ -594,14 +562,15 @@ tweet.
 
 Figure 7: Scope of Negation
 
-##  4  Experimentation
+## 4 Experimentation
 
 We train 90% of our data using different combinations of features and test
 them on the remaining 10%. We take the features in the following combinations
+
 - only unigrams, unigrams + filtered bigrams and trigrams, unigrams +
-negation, unigrams + filtered bigrams and trigrams + negation. We then train
-classifiers using different classification algorithms - Naive Bayes Classifier
-and Maximum Entropy Classifier.
+  negation, unigrams + filtered bigrams and trigrams + negation. We then train
+  classifiers using different classification algorithms - Naive Bayes Classifier
+  and Maximum Entropy Classifier.
 
 The task of classification of a tweet can be done in two steps - first,
 classifying "neutral" (or "subjective") vs. "objective" tweets and second,
@@ -613,7 +582,7 @@ shown in Figure 8 , we discuss these in detail below.
 
 Figure 8: Accuracy for Naive Bayes Classifier
 
-###  4.1  Naive Bayes
+### 4.1 Naive Bayes
 
 Naive Bayes classifier is the simplest and the fastest classifier. Many
 researchers [2], [4] claim to have gotten best results using this classifier.
@@ -641,14 +610,13 @@ as recall values are higher for single step than that for double step.
 
 Figure 9: Precision vs. Recall for Naive Bayes Classifier
 
-###  4.2  Maximum Entropy Classifier
+### 4.2 Maximum Entropy Classifier
 
 This classifier works by finding a probability distribution that maximizes the
 likelihood of testable data. This probability function is parameterized by
 weight vector. The optimal value of which can be found out using the method of
 Lagrange multipliers.
 
-  
 The results from training the Maximum Entropy Classifier are shown below in Figure
 10 . Accuracies follow a similar trend as compared to Naive Bayes classifier.
 Unigram is the lowest at 79.73% and we see an increase for negation detection
@@ -665,18 +633,18 @@ slight fall in precision of "negative" and "positive" classes.
 
 Figure 10: Precision vs. Recall for Maximum Entropy Classifier
 
-##  5  Future Work
+## 5 Future Work
 
 **Investigating Support Vector Machines**
-     Several papers have discussed the results using Support Vector Machines (SVMs) also. The next step would be to test our approach on SVMs. However, Go, Bhayani and Huang have reported that SVMs do not increase the accuracy [2]. 
-     
-**Building a classifier for Hindi tweets**
-     There are many users on Twitter that use primarily Hindi language. The approach discussed here can be used to create a Hindi language sentiment classifier. 
-     
-**Improving Results using Semantics Analysis**
-     Understanding the role of the nouns being talked about can help us better classify a given tweet. For example, "Skype often crashing: microsoft, what are you doing?" Here Skype is a product and Microsoft is a company. We can use semantic labellers to achieve this. Such an approach is discussed by Saif, He and Alani [6]. 
+Several papers have discussed the results using Support Vector Machines (SVMs) also. The next step would be to test our approach on SVMs. However, Go, Bhayani and Huang have reported that SVMs do not increase the accuracy [2].
 
-##  6  Conclusion
+**Building a classifier for Hindi tweets**
+There are many users on Twitter that use primarily Hindi language. The approach discussed here can be used to create a Hindi language sentiment classifier.
+
+**Improving Results using Semantics Analysis**
+Understanding the role of the nouns being talked about can help us better classify a given tweet. For example, "Skype often crashing: microsoft, what are you doing?" Here Skype is a product and Microsoft is a company. We can use semantic labellers to achieve this. Such an approach is discussed by Saif, He and Alani [6].
+
+## 6 Conclusion
 
 We create a sentiment classifier for twitter using labelled
 data sets. We also investigate the relevance of using a double step classifier
@@ -694,30 +662,28 @@ better than Maximum Entropy Classifier.
 We achieve the best accuracy of 86.68% in the case of Unigrams + Bigrams +
 Trigrams, trained on Naive Bayes Classifier.
 
-
-
 ## References
+
 [1] Pak, Alexander, and Patrick Paroubek. "Twitter as a Corpus for Sentiment Analysis and Opinion Mining." LREc. Vol. 10. 2010.
 
 [2] Alec Go, Richa Bhayani, and Lei Huang. Twitter sentiment classification using distant supervision. _Processing_, pages 1-6, 2009.
 
 [3] Niek Sanders. Twitter sentiment corpus. http://www.sananalytics.com/lab/twitter-sentiment/. Sanders Analytics.
 
-[4] Alexander Pak and Patrick Paroubek. Twitter as a corpus for sentiment analysis and opinion mining. volume 2010, pages 1320-1326, 2010. 
+[4] Alexander Pak and Patrick Paroubek. Twitter as a corpus for sentiment analysis and opinion mining. volume 2010, pages 1320-1326, 2010.
 
-[5] Efthymios Kouloumpis, Theresa Wilson, and Johanna Moore. Twitter sentiment analysis: The good the bad and the omg! _ICWSM_, 11:pages 538-541, 2011. 
+[5] Efthymios Kouloumpis, Theresa Wilson, and Johanna Moore. Twitter sentiment analysis: The good the bad and the omg! _ICWSM_, 11:pages 538-541, 2011.
 
-[6] Hassan Saif, Yulan He, and Harith Alani. Semantic sentiment analysis of twitter. In _The Semantic Web-ISWC 2012_, pages 508-524. Springer, 2012. 
+[6] Hassan Saif, Yulan He, and Harith Alani. Semantic sentiment analysis of twitter. In _The Semantic Web-ISWC 2012_, pages 508-524. Springer, 2012.
 
-[7] Isaac G Councill, Ryan McDonald, and Leonid Velikovich. What's great and what's not: learning to classify the scope of negation for improved sentiment analysis. In _Proceedings of the workshop on negation and speculation in natural language processing_, pages 51-59. Association for Computational Linguistics, 2010. 
+[7] Isaac G Councill, Ryan McDonald, and Leonid Velikovich. What's great and what's not: learning to classify the scope of negation for improved sentiment analysis. In _Proceedings of the workshop on negation and speculation in natural language processing_, pages 51-59. Association for Computational Linguistics, 2010.
 
-[8] Ilia Smirnov. Overview of stemming algorithms. _Mechanical Translation_, 2008. 
+[8] Ilia Smirnov. Overview of stemming algorithms. _Mechanical Translation_, 2008.
 
-[9] Martin F Porter. An algorithm for suffix stripping. _Program: electronic library and information systems_, 40(3):pages 211-218, 2006. 
+[9] Martin F Porter. An algorithm for suffix stripping. _Program: electronic library and information systems_, 40(3):pages 211-218, 2006.
 
-[10] Balakrishnan Gokulakrishnan, P Priyanthan, T Ragavan, N Prasath, and A Perera. Opinion mining and sentiment analysis on a twitter data stream. In _Advances in ICT for Emerging Regions (ICTer), 2012 International Conference on. IEEE_, 2012. 
+[10] Balakrishnan Gokulakrishnan, P Priyanthan, T Ragavan, N Prasath, and A Perera. Opinion mining and sentiment analysis on a twitter data stream. In _Advances in ICT for Emerging Regions (ICTer), 2012 International Conference on. IEEE_, 2012.
 
-[11] John Ross Quinlan. _C4. 5: programs for machine learning_, volume 1\. Morgan kaufmann, 1993. 
+[11] John Ross Quinlan. _C4. 5: programs for machine learning_, volume 1\. Morgan kaufmann, 1993.
 
 [12] Steven Bird, Ewan Klein, and Edward Loper. _Natural language processing with Python_. " O'Reilly Media, Inc.", 2009.
-
